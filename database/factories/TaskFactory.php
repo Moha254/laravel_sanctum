@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
-class TaskfactoryFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,11 @@ class TaskfactoryFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
             'user_id' => User::all()-> random()->id,
-            'name' => $this->faker->unique()->name(),
-            'Description' => $this->faker->sentense(),
-            'priority' => $this->faker->randomElement('low','high','medium')
+            'name' => $this->faker->unique()->sentence(),
+            'Description' => $this->faker->sentence(),
+            'priority' => $this->faker->randomElement(['low','high','medium'])
         ];
     }
 }

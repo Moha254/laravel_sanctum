@@ -44,7 +44,10 @@ class Authcontroller extends Controller
     }
 
     public function logout(){
-        return "succesfull logged out";
+       Auth::user()->currentAccessToken()->delete();
+       return $this->success([
+        'message' => 'you have successfully been logged out and your token has been deleted'
+       ]);
        }
 
 
